@@ -51,5 +51,5 @@ new_data = [
 
 existing_json_data["data"].append(new_data)
 
-# with open('detective_highscores.json', 'w') as f:
-#     json.dump(existing_json_data, f, indent=4) 
+with open('detective_highscores.json', 'w') as f:
+    json.dump(existing_json_data, f, indent=4) 
