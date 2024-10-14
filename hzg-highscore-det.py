@@ -24,12 +24,13 @@ if response.status_code == 200:
         rows.pop(0) # popped useless header row
         rankings = []
 
-        print(f"Rankings as of {request_time.strftime('%Y-%m-%dT%H:%M:%S')}")        
+        # print(f"*** Rankings as of {request_time.strftime('%Y-%m-%d %H:%M:%S')} ***") 
+
         for row in rows:
             cells = row.find_all("td")
-            ranking = [cell.text.strip() for cell in cells] # ranking = " - ".join([cell.text.strip() for cell in cells])
+            ranking = [cell.text.strip() for cell in cells] 
             rankings.append(ranking)
-            print(ranking)
+            # print(" - ".join(ranking))
 
     else: # table element not found
         print(f"Table with ID '{table_id}' not found.")
@@ -48,14 +49,7 @@ new_data = [
     }
 ]
 
-existing_json_data["data"].append(new_data) # json_data = json.dumps(new_data)
+existing_json_data["data"].append(new_data)
 
-with open('detective_highscores.json', 'w') as f:
-    json.dump(existing_json_data, f, indent=4) 
-
-
-""" json format vanilla
-{
-    "data": []
-}
-"""
+# with open('detective_highscores.json', 'w') as f:
+#     json.dump(existing_json_data, f, indent=4) 
